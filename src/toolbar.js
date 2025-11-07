@@ -3,7 +3,7 @@ import '../styles/toolbar.css'
 import { getNotificationCenter } from './notification'
 
 export function createToolbar() {
-  const toolbar = $('.top-toolbar')
+  const toolbar = $('.top-toolbar').attr('data-testid', 'top-toolbar')
   const name = $('<h2>').addClass('project-name').text('Project')
   const changeNameBtn = $('<button>')
     .text('Change name')

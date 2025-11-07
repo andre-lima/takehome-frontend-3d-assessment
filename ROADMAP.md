@@ -29,6 +29,7 @@ After going through the application and its codebase, here are a proposal for a 
 - [ ] Count value is not correct
 - [ ] Two scenes are created
 - [ ] useEffect subscriptions are not being cleared
+- [ ] When deleting shapes, the name that is removed is the last in the list
 
 # 3 - Features
 
