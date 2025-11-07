@@ -2,6 +2,7 @@ import { describe, expect, test, vi } from 'vitest';
 import { screen, within } from '@testing-library/react';
 import '../../index';
 import { userEvent } from '@testing-library/user-event';
+vi.mock('../3d/buildShape', { spy: true });
 
 describe('Application', () => {
   const toolbar = screen.getByTestId('top-toolbar');
@@ -40,6 +41,37 @@ describe('Application', () => {
       await userEvent.click(addShapeButtons[2]);
 
       expect(within(toolbar).getByText('4 objects')).toBeInTheDocument();
+    });
+
+    test('should be able to select and remove shapes from the 3D scene', async () => {
+      const addShapeButtons = within(shapePanel).getAllByRole('button');
+      await addShapeButtons[0].click();
+
+      const shapes = within(shapeProperties).getAllByText(/^Shape \d+$/);
+      const shapeToDelete = shapes[shapes.length - 1];
+      await shapeToDelete.click();
+
+      await userEvent.keyboard('{Delete}');
+
+      expect(within(shapeProperties).queryByText(shapeToDelete.textContent)).not.toBeInTheDocument();
+    });
+
+    test('should be able to add shapes as children to existing shapes', async () => {
+      const addShapeButtons = within(shapePanel).getAllByRole('button');
+      await addShapeButtons[0].click();
+
+      const shapes = within(shapeProperties).getAllByText(/^Shape \d+$/);
+      const shapeToAddChild = shapes[0];
+      await shapeToAddChild.click();
+      await addShapeButtons[0].click();
+
+      expect(within(shapeProperties).getByText(/^Child Shape \d+$/)).toBeInTheDocument();
+    });
+  });
+
+  describe('Shape Listing', () => {
+    test('The user should be able to see the total amount of shapes visible in the scene', () => {
+      expect(within(shapeProperties).getByText(/^\d+ objects$/)).toBeInTheDocument();
     });
   });
 });
