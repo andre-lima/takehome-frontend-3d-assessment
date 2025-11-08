@@ -1,11 +1,11 @@
 import { describe, expect, test, vi } from 'vitest';
 import { render } from 'vitest-browser-react';
-import SceneCanvas from './SceneCanvas';
+import SceneCanvas from './SceneCanvas.tsx';
 import { act } from 'react';
-import { createMainViewController } from '../3d/MainViewController';
+import { createMainViewController } from '../../3d/MainViewController.ts';
 import { Vector3 } from 'three';
 vi.mock('../3d/buildShape', { spy: true });
-import { mockNewMesh } from '../legacy-tests/tests.helpers.tsx';
+import { mockNewMesh } from '../../legacy-tests/tests.helpers.tsx';
 
 describe('SceneCanvas', () => {
   async function renderSceneCanvas() {

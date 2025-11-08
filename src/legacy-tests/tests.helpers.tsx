@@ -2,7 +2,7 @@ import { BoxGeometry, BufferGeometry, Mesh, MeshBasicMaterial, Vector3 } from 't
 import { vi } from 'vitest';
 import { createMainViewController } from '../3d/MainViewController';
 import { render } from 'vitest-browser-react';
-import SceneCanvas from '../components/SceneCanvas';
+import SceneCanvas from '../components/SceneCanvas/SceneCanvas.tsx';
 import * as exports from '../3d/buildShape';
 vi.mock('../3d/buildShape', { spy: true });
 

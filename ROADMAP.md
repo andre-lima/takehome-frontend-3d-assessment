@@ -8,27 +8,26 @@ After going through the application and its codebase, here are a proposal for a 
 
 ## Code 
 
-- [ ] Reactifying the whole application
-  - [ ] Replace jquery with React components
+- [x] Reactifying the whole application
+  - [x] Replace jquery with React components
 - [ ] Improve test coverage
 - [ ] CSS architecture
   - [ ] Create a design system
-    - [ ] Color pallete
+    - [ ] Color palette
     - [ ] Spacing variables
     - [ ] Typography variables
-  - [ ] Rename classes to use camelCase as recommended by CSS Modules documentation
 
 ## 3D Scene
 
-- [ ] Add a 3D grid
-- [ ] Add axis at point (0, 0, 0)
+- [x] Add a 3D grid
+- [x] Add axis at point (0, 0, 0)
 - [ ] Change geometry material
 
 # 2 - Bugs
 
 - [ ] Count value is not correct
 - [ ] Two scenes are created
-- [ ] useEffect subscriptions are not being cleared
+- [x] useEffect subscriptions are not being cleared
 - [ ] When deleting shapes, the name that is removed is the last in the list
 
 # 3 - Features
