@@ -7,10 +7,7 @@ import { getNotificationCenter } from '../../notification';
 export const ShapeItem = ({ children, isSelected, shape }: PropsWithChildren<{ isSelected: boolean; shape: Mesh }>) => {
   return (
     <div
-      className={styles.shapeItem}
-      style={{
-        backgroundColor: isSelected ? '#ffff00' : 'transparent',
-      }}
+      className={`${styles.shapeItem} ${isSelected && styles.isSelected}`}
       onClick={(e) => {
         getNotificationCenter().notify('shapeSelected', shape);
         e.stopPropagation();

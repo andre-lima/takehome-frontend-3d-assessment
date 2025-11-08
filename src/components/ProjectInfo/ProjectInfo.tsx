@@ -26,6 +26,7 @@ export const ProjectInfo = () => {
           className={styles.nameInput}
           type="text"
           defaultValue={projectName}
+          autoFocus
         ></input>
       ) : (
         <h2 onClick={handleClickButton} className={styles.projectName}>

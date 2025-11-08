@@ -3,6 +3,10 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
+  font-family: 'Inter', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
   * {
     box-sizing: border-box;
   }
@@ -15,7 +19,7 @@ body {
 /* Top Toolbar */
 .top-toolbar {
   height: 50px;
-  background: #333;
+  background: #0f172a;
   color: white;
   display: flex;
   align-items: center;
@@ -32,14 +36,14 @@ body {
 
 .left-bar {
   max-width: 200px;
-  background: #ddd;
+  background: rgb(30, 41, 59);
   padding: 10px;
 }
 
 .right-bar {
   width: 250px;
-  background: #ccc;
-  padding: 4px 10px;
+  background: rgb(30, 41, 59);
+  padding: 5px 10px;
 }
 
 .center-area {

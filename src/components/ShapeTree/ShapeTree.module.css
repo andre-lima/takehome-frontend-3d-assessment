@@ -1,13 +1,14 @@
 .container {
   height: 100%;
   overflow: hidden;
-  gap: 8px;
+  gap: 10px;
   display: flex;
   flex-direction: column;
+  color: #ddd;
 }
 
 .title {
-  margin: 8px 0;
+  margin: 10px 0;
 }
 
 .treeContainer {
@@ -18,13 +19,18 @@
 }
 
 .shapeItem {
-  padding: 4px;
+  padding: 5px;
   cursor: pointer;
+  border-radius: 5px;
+}
+
+.isSelected {
+  background-color: #ffff4444;
 }
 
 .labelContainer {
   display: flex;
-  gap: 4px;
+  gap: 5px;
 
   .label {
     font-family: sans-serif;
@@ -38,7 +44,7 @@
     justify-content: center;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     line-height: 0;
     background-color: #773344;
 

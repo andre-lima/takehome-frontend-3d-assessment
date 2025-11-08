@@ -1,4 +1,4 @@
-import { describe, expect, test, vi } from 'vitest';
+import { describe, expect, test } from 'vitest';
 import { userEvent } from 'vitest/browser';
 import { render } from 'vitest-browser-react';
 import { App } from './App.tsx';
@@ -26,7 +26,6 @@ describe('Application', async () => {
 
       await button.click();
 
-      await toolbar.getByTestId('project-name-input').click();
       await userEvent.keyboard(' 2');
 
       await button.click();
