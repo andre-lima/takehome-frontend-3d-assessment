@@ -14,7 +14,10 @@ export const App = () => {
     const handleDeleteKey = (event: KeyboardEvent) => {
       if (event.key === 'Delete' || event.key === 'Backspace') {
         shapeController.deleteSelectedShape();
-        event.preventDefault();
+
+        if ((event.target as HTMLElement).nodeName !== 'INPUT') {
+          event.preventDefault();
+        }
       }
     };
     window.addEventListener('keydown', handleDeleteKey);

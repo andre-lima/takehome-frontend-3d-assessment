@@ -24,14 +24,16 @@ describe('Application', async () => {
       const shapeProperties = getByTestId('shape-properties');
       const button = toolbar.getByRole('button');
 
-      vi.spyOn(window, 'prompt').mockReturnValue('New project name');
+      await button.click();
+
+      await toolbar.getByTestId('project-name-input').click();
+      await userEvent.keyboard(' 2');
 
       await button.click();
 
-      expect(prompt).toHaveBeenCalledWith('Enter new name', 'Project');
       expect(toolbar.getByText('Project', { exact: true })).not.toBeInTheDocument();
-      expect(toolbar.getByText('New project name')).toBeInTheDocument();
-      expect(shapeProperties.getByText('New project name')).toBeInTheDocument();
+      expect(toolbar.getByText('Project 2')).toBeInTheDocument();
+      expect(shapeProperties.getByText('Project 2')).toBeInTheDocument();
     });
   });
 

@@ -25,12 +25,7 @@ After going through the application and its codebase, here are a proposal for a 
 - [x] Reactifying the whole application
   - [x] Replace jquery with React components
 - [x] Improve test coverage
-- [ ] Change project name with an input
-- [ ] CSS architecture
-  - [ ] Create a design system
-    - [ ] Color palette
-    - [ ] Spacing variables
-    - [ ] Typography variables
+- [x] Change project name with an input
 
 ## 3D Scene
 
@@ -56,7 +51,14 @@ TBD
 
 # 5 - Future Improvements
 
+- [ ] Revisit pub/sub library
+  - [ ] Consider using React Context+Reducer or a 3rd party like Zustand
 - [ ] Using Radix Theme to improve page design (sorry Danilo, but it's quite ugly now!)
 - [ ] Add a debug toggle, toggling an overlay showing on top of the objects, displaying its label and position.
 - [ ] Add a wireframe toggle, showing the geometries' wireframe when toggled.
 - [ ] Collapsing children shape list to improve visualization of nodes.
+- [ ] CSS architecture
+  - [ ] Create a design system
+    - [ ] Color palette
+    - [ ] Spacing variables
+    - [ ] Typography variables

@@ -1,21 +1,39 @@
 import styles from './ProjectInfo.module.css';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { getNotificationCenter } from '../../notification';
 
 export const ProjectInfo = () => {
   const [projectName, setProjectName] = useState('Project');
+  const [isEditingName, setIsEditingName] = useState(false);
+  const inputValue = useRef<HTMLInputElement>(null);
 
   const handleClickButton = () => {
-    const newName = prompt('Enter new name', projectName) || projectName;
-    setProjectName(newName);
-    getNotificationCenter().notify('projectName', newName);
+    if (isEditingName && inputValue.current && inputValue.current?.value.length > 0) {
+      setProjectName(inputValue.current.value);
+      getNotificationCenter().notify('projectName', inputValue.current.value);
+      setIsEditingName(false);
+    } else {
+      setIsEditingName(true);
+    }
   };
 
   return (
     <div className={styles.projectInfo}>
-      <h2 className={styles.projectName}>{projectName}</h2>
+      {isEditingName ? (
+        <input
+          data-testid="project-name-input"
+          ref={inputValue}
+          className={styles.nameInput}
+          type="text"
+          defaultValue={projectName}
+        ></input>
+      ) : (
+        <h2 onClick={handleClickButton} className={styles.projectName}>
+          {projectName}
+        </h2>
+      )}
       <button onClick={handleClickButton} className={styles.button}>
-        Change name
+        {isEditingName ? 'Save' : 'Change name'}
       </button>
     </div>
   );
