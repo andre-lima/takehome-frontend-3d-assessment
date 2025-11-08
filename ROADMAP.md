@@ -4,6 +4,16 @@ After going through the application and its codebase, here are a proposal for a 
 
 *Note: Most likely, not all of these items will be tackled by the end of the assignment.*
 
+# Assumptions
+
+## Shapes' Labels
+
+- The shape labels should include a number that represents the number of shapes created so far +1.
+
+- If a shape was deleted, the number of shapes created is not subtracted by 1.
+
+- Child labels will use the same global counter, and not be numbered after its parent's chldren shapes created.
+
 # 1 - Application Improvements
 
 ## Code 

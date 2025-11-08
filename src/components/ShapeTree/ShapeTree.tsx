@@ -36,8 +36,8 @@ export const ShapeList: React.FC = () => {
       <span>{numOfShapes} objects</span>
 
       <div className={styles.treeContainer}>
-        {shapes.map((shape, index) => (
-          <ShapeNode key={shape.uuid} shape={shape} selectedShape={selectedShape} index={index} level={0} />
+        {shapes.map((shape) => (
+          <ShapeNode key={shape.uuid} shape={shape} selectedShape={selectedShape} level={0} />
         ))}
       </div>
     </div>
@@ -47,25 +47,19 @@ export const ShapeList: React.FC = () => {
 interface ShapeNodeProps {
   shape: Mesh;
   selectedShape: Mesh | null;
-  index: number;
   level: number;
 }
 
-const ShapeNode: React.FC<ShapeNodeProps> = ({ shape, selectedShape, index, level }) => {
-  const label = level === 0 ? `Shape ${index + 1}` : `Child Shape ${index + 1}`;
+const ShapeNode = ({ shape, selectedShape, level }: ShapeNodeProps) => {
+  const label = level === 0 ? shape.name : `Child ${shape.name}`;
+
   return (
     <ShapeItem key={shape.uuid} shape={shape} isSelected={shape.uuid === selectedShape?.uuid}>
       {label}
       {shape.children.length > 0 && (
         <div style={{ marginLeft: '10px' }}>
-          {shape.children.map((child, childIndex) => (
-            <ShapeNode
-              key={child.uuid}
-              shape={child as Mesh}
-              selectedShape={selectedShape}
-              index={childIndex}
-              level={level + 1}
-            />
+          {shape.children.map((child) => (
+            <ShapeNode key={child.uuid} shape={child as Mesh} selectedShape={selectedShape} level={level + 1} />
           ))}
         </div>
       )}

@@ -13,6 +13,8 @@ export interface MainViewController {
 export function createMainViewController(): MainViewController {
   const view = ThreeEngineController.getInstance();
 
+  let shapesCreated = 0;
+
   let selectedShape: THREE.Mesh | null = null;
   const highlightedMaterial = new THREE.MeshBasicMaterial({ color: 0xffff00 });
 
@@ -51,6 +53,9 @@ export function createMainViewController(): MainViewController {
 
       if (newMesh) {
         newMesh.position.copy(randomPosition());
+
+        shapesCreated++;
+        newMesh.name = 'Shape ' + shapesCreated;
 
         if (selectedShape) {
           selectedShape.add(newMesh);
