@@ -49,8 +49,7 @@ describe('Application', async () => {
       await addShapeButtons[1].click();
       await addShapeButtons[2].click();
 
-      // TODO: Update to '3 objects' before bug is fixed
-      expect(toolbar.getByText('6 objects')).toBeInTheDocument();
+      expect(toolbar.getByText('3 objects')).toBeInTheDocument();
     });
 
     test('should be able to select and remove shapes from the 3D scene', async () => {

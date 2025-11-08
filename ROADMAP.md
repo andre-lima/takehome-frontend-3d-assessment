@@ -14,13 +14,18 @@ After going through the application and its codebase, here are a proposal for a 
 
 - Child labels will use the same global counter, and not be numbered after its parent's chldren shapes created.
 
+## Shape Preview
+
+- I'm using a simple unicode character that represents roughly the shape displayed. A better image could be used in the future.
+
 # 1 - Application Improvements
 
 ## Code 
 
 - [x] Reactifying the whole application
   - [x] Replace jquery with React components
-- [ ] Improve test coverage
+- [x] Improve test coverage
+- [ ] Change project name with an input
 - [ ] CSS architecture
   - [ ] Create a design system
     - [ ] Color palette
@@ -35,15 +40,14 @@ After going through the application and its codebase, here are a proposal for a 
 
 # 2 - Bugs
 
-- [ ] Count value is not correct
-- [ ] Two scenes are created
+- [x] Count value is not correct
 - [x] useEffect subscriptions are not being cleared
-- [ ] When deleting shapes, the name that is removed is the last in the list
+- [x] When deleting shapes, the shape names changes based on index
 
 # 3 - Features
 
-- [ ] The user should be able to remove a shape from the scene shape from the shape tree by clicking a "delete" button
-    - [ ] The button should be next to each item in the tree
+- [x] The user should be able to remove a shape from the scene shape from the shape tree by clicking a "delete" button
+    - [x] The button should be next to each item in the tree
 - [ ] Allow the user to see the shape's geometry type and color in the tree view
 
 # 4 - Performance improvements
@@ -52,5 +56,7 @@ TBD
 
 # 5 - Future Improvements
 
+- [ ] Using Radix Theme to improve page design (sorry Danilo, but it's quite ugly now!)
 - [ ] Add a debug toggle, toggling an overlay showing on top of the objects, displaying its label and position.
 - [ ] Add a wireframe toggle, showing the geometries' wireframe when toggled.
+- [ ] Collapsing children shape list to improve visualization of nodes.

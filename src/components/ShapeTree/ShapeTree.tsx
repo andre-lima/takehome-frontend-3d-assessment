@@ -1,12 +1,12 @@
-import $ from 'jquery';
-import React, { useEffect, useState, type PropsWithChildren } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './ShapeTree.module.css';
 import { getNotificationCenter } from '../../notification';
 import type { Mesh } from 'three';
 import ThreeEngineController from '../../3d/engine.ts';
+import { ShapeNode } from './ShapeNode.tsx';
 
 export const ShapeList: React.FC = () => {
-  const [projectName, setProjectName] = useState($('.project-name').text());
+  const [projectName, setProjectName] = useState('Project');
   const [numOfShapes, setNumOfShapes] = useState(0);
   const [shapes, setShapes] = useState<Mesh[]>([]);
   const [selectedShape, setSelectedShape] = useState<Mesh | null>(null);
@@ -43,43 +43,3 @@ export const ShapeList: React.FC = () => {
     </div>
   );
 };
-
-interface ShapeNodeProps {
-  shape: Mesh;
-  selectedShape: Mesh | null;
-  level: number;
-}
-
-const ShapeNode = ({ shape, selectedShape, level }: ShapeNodeProps) => {
-  const label = level === 0 ? shape.name : `Child ${shape.name}`;
-
-  return (
-    <ShapeItem key={shape.uuid} shape={shape} isSelected={shape.uuid === selectedShape?.uuid}>
-      {label}
-      {shape.children.length > 0 && (
-        <div style={{ marginLeft: '10px' }}>
-          {shape.children.map((child) => (
-            <ShapeNode key={child.uuid} shape={child as Mesh} selectedShape={selectedShape} level={level + 1} />
-          ))}
-        </div>
-      )}
-    </ShapeItem>
-  );
-};
-
-function ShapeItem({ children, isSelected, shape }: PropsWithChildren<{ isSelected: boolean; shape: Mesh }>) {
-  return (
-    <div
-      className="shape-item"
-      style={{
-        backgroundColor: isSelected ? '#ffff00' : 'transparent',
-      }}
-      onClick={(e) => {
-        getNotificationCenter().notify('shapeSelected', shape);
-        e.stopPropagation();
-      }}
-    >
-      {children}
-    </div>
-  );
-}
