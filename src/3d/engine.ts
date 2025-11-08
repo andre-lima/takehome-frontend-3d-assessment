@@ -136,9 +136,13 @@ export default class ThreeEngineController {
 function buildScene() {
   const scene = new Scene();
   scene.background = new Color(0x111111);
-  const gridHelper = new GridHelper(50, 50);
+
   const axesHelper = new AxesHelper(5);
+  axesHelper.userData.ignoreRaycast = true;
   scene.add(axesHelper);
+
+  const gridHelper = new GridHelper(50, 50);
+  gridHelper.userData.ignoreRaycast = true;
   scene.add(gridHelper);
 
   return scene;

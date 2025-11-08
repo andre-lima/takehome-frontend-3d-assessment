@@ -1,11 +1,9 @@
 import { describe, expect, test, vi } from 'vitest';
 import { render } from 'vitest-browser-react';
-import SceneCanvas from './SceneCanvas.tsx';
+import SceneCanvas from './SceneCanvas';
 import { act } from 'react';
-import { createMainViewController } from '../../3d/MainViewController.ts';
-import { Vector3 } from 'three';
-vi.mock('../3d/buildShape', { spy: true });
-import { mockNewMesh } from '../../legacy-tests/tests.helpers.tsx';
+import { createMainViewController } from '../../3d/MainViewController';
+import { BoxGeometry, BufferGeometry, Mesh, MeshBasicMaterial, Vector3 } from 'three';
 
 describe('SceneCanvas', () => {
   async function renderSceneCanvas() {
@@ -41,3 +39,21 @@ describe('SceneCanvas', () => {
     expect(mockedMesh.userData.isSelected).toBe(true);
   });
 });
+
+import * as exports from '../../3d/buildShape';
+vi.mock('../../3d/buildShape', { spy: true });
+
+function mockNewMesh({
+  color = 'red',
+  position = new Vector3(),
+  mockedMesh = new Mesh(new BoxGeometry(), new MeshBasicMaterial({ color })),
+}: {
+  color?: string;
+  mockedMesh?: Mesh<BufferGeometry, MeshBasicMaterial>;
+  position?: Vector3;
+} = {}) {
+  vi.spyOn(mockedMesh.position, 'copy').mockImplementationOnce(() => position);
+
+  vi.mocked(exports.buildShape).mockImplementationOnce(() => mockedMesh);
+  return mockedMesh;
+}

@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect, useRef } from 'react';
 import styles from './SceneCanvas.module.css';
-import ThreeEngineController from '../../3d/engine.ts';
-import type { MainViewController } from '../../3d/MainViewController.ts';
+import ThreeEngineController from '../../3d/engine';
+import type { MainViewController } from '../../3d/MainViewController';
 
 export default function SceneCanvas({ controller }: { controller: MainViewController }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
