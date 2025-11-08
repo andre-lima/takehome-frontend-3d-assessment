@@ -1,4 +1,15 @@
-import { AxesHelper, Color, GridHelper, Object3D, PerspectiveCamera, Scene, Vector3, WebGLRenderer } from 'three';
+import {
+  AmbientLight,
+  AxesHelper,
+  Color,
+  DirectionalLight,
+  GridHelper,
+  Object3D,
+  PerspectiveCamera,
+  Scene,
+  Vector3,
+  WebGLRenderer,
+} from 'three';
 import { OrbitControls } from 'three/examples/jsm/Addons.js';
 
 export default class ThreeEngineController {
@@ -146,6 +157,13 @@ function buildScene() {
   const gridHelper = new GridHelper(50, 50);
   gridHelper.userData.ignoreRaycast = true;
   scene.add(gridHelper);
+
+  const dirLight = new DirectionalLight(0xffffff, 3);
+  const ambLight = new AmbientLight(0xffffff, 0.2);
+  dirLight.position.set(10, 3, 0);
+  dirLight.lookAt(new Vector3(0, 0, 0));
+  scene.add(dirLight);
+  scene.add(ambLight);
 
   return scene;
 }

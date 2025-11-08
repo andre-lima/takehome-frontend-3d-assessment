@@ -36,7 +36,7 @@ After going through the application and its codebase, here are a proposal for a 
 
 - [x] Add a 3D grid
 - [x] Add axis at point (0, 0, 0)
-- [ ] Change geometry material
+- [x] Change geometry material and add lights
 
 # 2 - Bugs
 
@@ -48,7 +48,7 @@ After going through the application and its codebase, here are a proposal for a 
 
 - [x] The user should be able to remove a shape from the scene shape from the shape tree by clicking a "delete" button
     - [x] The button should be next to each item in the tree
-- [ ] Allow the user to see the shape's geometry type and color in the tree view
+- [x] Allow the user to see the shape's geometry type and color in the tree view
 
 # 4 - Performance improvements
 

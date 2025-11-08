@@ -16,13 +16,13 @@ export function buildShape(shape: Shape): Mesh {
 
   switch (shape) {
     case 'sphere':
-      mesh = new Mesh(new THREE.SphereGeometry(1, 32, 32), new THREE.MeshBasicMaterial({ color }));
+      mesh = new Mesh(new THREE.SphereGeometry(1, 32, 32), new THREE.MeshStandardMaterial({ color }));
       break;
     case 'cube':
-      mesh = new Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshBasicMaterial({ color }));
+      mesh = new Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshStandardMaterial({ color }));
       break;
     case 'cylinder':
-      mesh = new Mesh(new THREE.CylinderGeometry(1, 1, 2, 32), new THREE.MeshBasicMaterial({ color }));
+      mesh = new Mesh(new THREE.CylinderGeometry(1, 1, 2, 32), new THREE.MeshStandardMaterial({ color }));
       break;
   }
 
