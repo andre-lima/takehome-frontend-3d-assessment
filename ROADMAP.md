@@ -33,10 +33,10 @@ After going through the application and its codebase, here are a proposal for a 
 - [x] Add axis at point (0, 0, 0)
 - [x] Change geometry material and add lights
 
-# 2 - Bugs
+# 2 - Bugs/Issues
 
 - [x] Count value is not correct
-- [x] useEffect subscriptions are not being cleared
+- [x] useEffect and notification subscriptions are not being cleared
 - [x] When deleting shapes, the shape names changes based on index
 
 # 3 - Features

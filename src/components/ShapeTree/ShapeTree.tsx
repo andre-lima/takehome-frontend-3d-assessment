@@ -11,23 +11,29 @@ export const ShapeList: React.FC = () => {
   const [shapes, setShapes] = useState<Mesh[]>([]);
   const [selectedShape, setSelectedShape] = useState<Mesh | null>(null);
 
-  getNotificationCenter().subscribe('projectName', (newName) => {
-    setProjectName(newName);
-  });
-
   useEffect(() => {
-    getNotificationCenter().subscribe('shapeAdded', (shapes: Mesh[]) => {
+    const setNameAction = (newName: string) => {
+      setProjectName(newName);
+    };
+    const shapeChangeAction = (shapes: Mesh[]) => {
       setShapes(shapes);
       setNumOfShapes(ThreeEngineController.getInstance().getObjectCount());
-    });
-    getNotificationCenter().subscribe('shapeRemoved', (shapes: Mesh[]) => {
-      setShapes(shapes);
-      setNumOfShapes(ThreeEngineController.getInstance().getObjectCount());
-    });
-
-    getNotificationCenter().subscribe('shapeSelected', (shape: Mesh | null) => {
+    };
+    const shapeSelectionAction = (shape: Mesh | null) => {
       setSelectedShape(shape);
-    });
+    };
+
+    getNotificationCenter().subscribe('projectName', setNameAction);
+    getNotificationCenter().subscribe('shapeAdded', shapeChangeAction);
+    getNotificationCenter().subscribe('shapeRemoved', shapeChangeAction);
+    getNotificationCenter().subscribe('shapeSelected', shapeSelectionAction);
+
+    return () => {
+      getNotificationCenter().unsubscribe('projectName', setNameAction);
+      getNotificationCenter().unsubscribe('shapeAdded', shapeChangeAction);
+      getNotificationCenter().unsubscribe('shapeRemoved', shapeChangeAction);
+      getNotificationCenter().unsubscribe('shapeSelected', shapeSelectionAction);
+    };
   }, []);
 
   return (
